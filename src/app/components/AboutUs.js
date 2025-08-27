@@ -43,7 +43,7 @@ const AboutUs= () => {
               Our mission is simple – to create magical, stress-free celebrations that reflect your style and personality. With years of expertise, a passionate team, and a commitment to 100% guest satisfaction, we have earned our place as the best event management company in Nagercoil.
             </p>
             <p className="text-gray-700">
-              From intimate gatherings to grand weddings, every detail is handled with care, creativity, and a touch of luxury. With us, your only job is to celebrate – we'll take care of the rest.
+              From intimate gatherings to grand weddings, every detail is handled with care, creativity, and a touch of luxury. With us, your only job is to celebrate – we will take care of the rest.
             </p>
             
             <motion.div 
