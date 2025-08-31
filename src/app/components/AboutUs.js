@@ -222,7 +222,7 @@ const AboutUs = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-12 p-6 bg-gradient-to-r from-gold/5 to-gold/10 rounded-2xl border-l-4 border-gold relative overflow-hidden"
             >
-              <div className="absolute -top-4 -right-4 text-6xl text-gold/10 font-playfair">"</div>
+              <div className="absolute -top-4 -right-4 text-6xl text-gold/10 font-playfair">&quot;</div>
               <motion.div 
                 animate={{ 
                   textShadow: ["0 0 8px rgba(212, 175, 55, 0.3)", "0 0 16px rgba(212, 175, 55, 0.4)", "0 0 8px rgba(212, 175, 55, 0.3)"]
@@ -230,7 +230,7 @@ const AboutUs = () => {
                 transition={{ duration: 3, repeat: Infinity }}
                 className="text-gold-dark text-xl italic font-playfair relative z-10"
               >
-                "Where exquisite moments become timeless memories"
+                &quot;Where exquisite moments become timeless memories&quot;
               </motion.div>
             </motion.div>
 
