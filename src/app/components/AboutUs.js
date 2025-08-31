@@ -210,7 +210,7 @@ const AboutUs = () => {
                 variants={itemVariants}
                 className="text-gray-700 text-lg leading-relaxed font-light"
               >
-                Whether an intimate gathering or a grand wedding, we infuse each event with luxury, elegance, and that distinctive V.I.P touch that sets us apart as Nagercoil's premier event planners.
+                Whether an intimate gathering or a grand wedding, we infuse each event with luxury, elegance, and that distinctive V.I.P touch that sets us apart as Nagercoil premier event planners.
               </motion.p>
             </motion.div>
             
