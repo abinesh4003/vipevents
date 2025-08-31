@@ -1,10 +1,17 @@
-// components/Stalls.jsx
 'use client';
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Stalls = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const stalls = [
     { 
       name: "Popcorn Stall", 
@@ -75,94 +82,210 @@ const Stalls = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      scale: 1,
+      y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
 
   return (
-    <section id="stalls" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-16 text-black"
+    <section ref={ref} id="stalls" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-5 text-gold/5 text-8xl">✦</div>
+      <div className="absolute bottom-20 right-5 text-gold/5 text-8xl">✦</div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          Stalls & <span className="text-gold">Fun Options</span>
-        </motion.h2>
-        
+          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-black mb-4">
+            Stalls & <span className="text-gold">Fun Options</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-gold to-gold-dark mx-auto mb-6" />
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto font-light">
+            From colorful balloon setups to mouth-watering food stalls, we ensure your celebration has the best entertainment and catering in Nagercoil and Kanyakumari.
+          </p>
+        </motion.div>
+
+        {/* Stalls Carousel */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          animate={isInView ? "visible" : "hidden"}
+          className="relative"
         >
-          {stalls.map((stall, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:shadow-gold/20 transition-all duration-500"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={stall.image}
-                  alt={stall.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                  <span className="text-white text-lg font-medium">{stall.name}</span>
-                </div>
-                <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-full text-xl">
-                  {stall.icon}
-                </div>
-              </div>
-              
-              <div className="p-5">
-                <h3 className="font-semibold mb-2 text-black group-hover:text-gold transition-colors duration-300">
-                  {stall.name}
-                </h3>
-                <p className="text-sm text-gray-600">
-                  {stall.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            pagination={{ 
+              clickable: true,
+              el: '.swiper-pagination',
+              renderBullet: (index, className) => {
+                return `<span class="${className} bg-gold/30"></span>`;
+              }
+            }}
+            autoplay={{ 
+              delay: 4000, 
+              disableOnInteraction: false 
+            }}
+            loop={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 20
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 25
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 30
+              }
+            }}
+            className="luxury-stalls-swiper pb-16"
+          >
+            {stalls.map((stall, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 relative"
+                >
+                  {/* Card with elegant borders */}
+                  <div className="absolute inset-0.5 border border-gold/10 rounded-3xl pointer-events-none z-20" />
+                  
+                  {/* Image Container */}
+                  <div className="relative h-60 overflow-hidden">
+                    <Image
+                      src={stall.image}
+                      alt={stall.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
+                      <span className="text-white text-lg font-medium">{stall.name}</span>
+                    </div>
+                    
+                    {/* Icon Badge */}
+                    <div className="absolute top-4 right-4 bg-white/90 p-3 rounded-full text-xl shadow-lg backdrop-blur-sm">
+                      {stall.icon}
+                    </div>
+                    
+                    {/* Hover Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="font-semibold mb-3 text-black group-hover:text-gold transition-colors duration-300 text-lg">
+                      {stall.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm font-light leading-relaxed">
+                      {stall.description}
+                    </p>
+                    
+                    {/* Decorative divider */}
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-gold to-gold-dark my-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <button className="text-gold text-sm font-medium hover:underline flex items-center gap-2 group/btn">
+                      <span>Explore Stall</span>
+                      <span className="transform group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
+                    </button>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation */}
+          <div className="swiper-button-prev !text-gold !w-12 !h-12 !rounded-full !bg-white !shadow-lg hover:!bg-gold hover:!text-white transition-all duration-300"></div>
+          <div className="swiper-button-next !text-gold !w-12 !h-12 !rounded-full !bg-white !shadow-lg hover:!bg-gold hover:!text-white transition-all duration-300"></div>
+          
+          {/* Custom Pagination */}
+          <div className="swiper-pagination !bottom-0"></div>
         </motion.div>
-        
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-center mt-12 text-gray-700 max-w-3xl mx-auto text-lg"
-        >
-          From colorful balloon setups to mouth-watering food stalls, we ensure your celebration has the best entertainment and catering in Nagercoil and Kanyakumari, tailored to your style.
-        </motion.p>
-        
+
+        {/* CTA Button */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center mt-10"
+          className="text-center mt-16"
         >
-          <button className="bg-gold text-white px-8 py-3 rounded-full font-medium hover:bg-gold/90 transition-colors duration-300">
-            Book Our Stalls
-          </button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-gold to-gold-dark text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+          >
+            <span className="relative z-10">Book Our Stalls</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-gold-dark to-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
         </motion.div>
       </div>
+
+      <style jsx global>{`
+        .luxury-stalls-swiper {
+          padding: 0 20px;
+        }
+        .luxury-stalls-swiper .swiper-button-next,
+        .luxury-stalls-swiper .swiper-button-prev {
+          color: #d4af37;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+          transition: all 0.3s ease;
+        }
+        .luxury-stalls-swiper .swiper-button-next:after,
+        .luxury-stalls-swiper .swiper-button-prev:after {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .luxury-stalls-swiper .swiper-pagination-bullet {
+          background: #d4af37;
+          opacity: 0.4;
+          width: 10px;
+          height: 10px;
+          transition: all 0.3s ease;
+        }
+        .luxury-stalls-swiper .swiper-pagination-bullet-active {
+          background: #d4af37;
+          opacity: 1;
+          width: 30px;
+          border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+          .luxury-stalls-swiper {
+            padding: 0 10px;
+          }
+          .luxury-stalls-swiper .swiper-button-next,
+          .luxury-stalls-swiper .swiper-button-prev {
+            display: none;
+          }
+        }
+      `}</style>
     </section>
   );
 };
+
 export default Stalls;
