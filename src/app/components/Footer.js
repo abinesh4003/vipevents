@@ -99,8 +99,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center justify-center md:justify-start gap-3">
                 <Mail className="text-gold" size={18} />
-                <a href="mailto:info@vipfunctionplanners.com" className="text-gray-400 hover:text-gold transition-colors text-sm">
-                  info@vipfunctionplanners.com
+                <a href="mailto:shejinoantony@gmail.com" className="text-gray-400 hover:text-gold transition-colors text-sm">
+                  shejinoantony@gmail.com
                 </a>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-3">

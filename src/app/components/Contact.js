@@ -153,7 +153,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email Us</p>
-                    <a href="mailto:info@vipfunctionplanners.com" className="text-lg hover:text-gold transition-colors block mt-1 break-all">
+                    <a href="mailto:shejinoantony@gmail.com" className="text-lg hover:text-gold transition-colors block mt-1 break-all">
                       info@vipfunctionplanners.com
                     </a>
                   </div>

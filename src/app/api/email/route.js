@@ -146,7 +146,7 @@ export async function POST(request) {
             <p style="margin: 0;">This inquiry was submitted through the V.I.P Function Planners website contact form</p>
             <p style="margin: 5px 0 0 0;">
               <a href="tel:+918778304145" style="color: #d4af37; text-decoration: none;">+91 8778304145</a> • 
-              <a href="mailto:info@vipfunctionplanners.com" style="color: #d4af37; text-decoration: none;">info@vipfunctionplanners.com</a>
+              <a href="mailto:shejinoantony@gmail.com" style="color: #d4af37; text-decoration: none;">shejinoantony@gmail.com</a>
             </p>
           </div>
         </div>

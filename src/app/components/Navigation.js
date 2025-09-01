@@ -24,12 +24,14 @@ const Navigation = () => {
 
   const handleWhatsAppClick = () => {
     // Replace with actual WhatsApp number
-    window.open('https://wa.me/1234567890', '_blank');
+     const message = "Hello V.I.P Function Planners! Im interested in your event planning services.";
+    const whatsappUrl = `https://wa.me/918778304145?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const handleCallClick = () => {
     // Replace with actual phone number
-    window.open('tel:+1234567890', '_self');
+    window.open('tel:+91 87788304145', '_self');
   };
 
   // Reordered navigation items as requested

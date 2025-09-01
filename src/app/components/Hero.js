@@ -212,7 +212,7 @@ const HeroSection = () => {
       {isMobile && (
         <div className="fixed bottom-4 right-4 z-20 flex flex-col gap-2">
           <motion.a
-            href="https://wa.me/1234567890" // Replace with actual WhatsApp number
+            href="https://wa.me/8778304145" // Replace with actual WhatsApp number
             target="_blank"
             rel="noopener noreferrer"
             initial={{ scale: 0 }}
@@ -229,7 +229,7 @@ const HeroSection = () => {
           </motion.a>
           
           <motion.a
-            href="tel:+1234567890" // Replace with actual phone number
+            href="tel:+91 87788304145" // Replace with actual phone number
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1.5, type: "spring" }}
