@@ -229,7 +229,7 @@ const AboutUs = () => {
                 variants={itemVariants}
                 className="text-gray-700 text-base md:text-lg leading-relaxed"
               >
-                At <span className="text-gold font-medium">V.I.P Function Planners</span>, we don't just organize events — we craft memories. From your first consultation to the final guest departure, our mission is to make your celebration stress-free, elegant, and unforgettable.
+                At <span className="text-gold font-medium">V.I.P Function Planners</span>, we dont just organize events — we craft memories. From your first consultation to the final guest departure, our mission is to make your celebration stress-free, elegant, and unforgettable.
               </motion.p>
               
               <motion.p 

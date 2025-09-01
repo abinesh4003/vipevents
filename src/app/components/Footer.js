@@ -21,7 +21,7 @@ const Footer = () => {
   };
 
   const openWhatsApp = () => {
-    const message = "Hello V.I.P Function Planners! I'm interested in your event planning services.";
+    const message = "Hello V.I.P Function Planners! Im interested in your event planning services.";
     const whatsappUrl = `https://wa.me/918778304145?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -48,7 +48,7 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold text-gold mb-4">V.I.P Function Planners</h3>
             <p className="text-gray-400 mb-4 leading-relaxed">
-              Creating unforgettable events with precision, creativity, and the distinctive V.I.P touch that sets us apart as Nagercoil's premier event planners.
+              Creating unforgettable events with precision, creativity, and the distinctive V.I.P touch that sets us apart as Nagercoils premier event planners.
             </p>
             <div className="flex justify-center md:justify-start gap-3">
               <a href="#" className="text-gray-400 hover:text-gold transition-colors p-2 bg-gray-900 rounded-full">

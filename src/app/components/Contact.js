@@ -131,7 +131,7 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold mb-6 text-gold">Get In Touch</h3>
               
               <p className="mb-8 text-gray-300">
-                Let's make your next event the talk of the town! Whether it's a wedding, birthday, engagement, or reception, trust V.I.P Function Planners – the best in Nagercoil – to create a celebration you will never forget.
+                Lets make your next event the talk of the town! Whether its a wedding, birthday, engagement, or reception, trust V.I.P Function Planners – the best in Nagercoil – to create a celebration you will never forget.
               </p>
               
               <div className="space-y-5">
